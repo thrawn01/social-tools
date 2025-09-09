@@ -16,7 +16,7 @@ func TestNewDefaultConfig(t *testing.T) {
 	config := screenshot.NewDefaultConfig()
 
 	assert.Equal(t, 800, config.ViewportWidth)
-	assert.Equal(t, 1200, config.ViewportHeight)
+	assert.Equal(t, 600, config.ViewportHeight)
 	assert.Equal(t, 30*time.Second, config.Timeout)
 	assert.Equal(t, ".", config.OutputDir)
 	assert.Contains(t, config.UserAgent, "Chrome")

@@ -57,7 +57,7 @@ Flags:
   -f, --file string      Path to the markdown file to process (required)
       --dry-run          Show what would be done without making changes
   -h, --help             help for screenshot-tweets
-      --height int       Viewport height for screenshots (default 1200)
+      --height int       Viewport height for screenshots (default 600)
   -o, --output string    Directory to save screenshot files (default ".")
   -t, --timeout duration Timeout for screenshot capture (default 30s)
   -v, --verbose          Enable verbose logging
@@ -88,11 +88,15 @@ screenshot-tweets --file tweets.md --width 1024 --height 768
 
 ### Viewport Optimization
 
-Many websites are optimized for narrower viewports (around 800px), which results in larger, more readable text in screenshots. The default width of 800px provides good readability for most sites. Adjust the width based on your specific needs:
+Many websites are optimized for narrower viewports (around 800px), which results in larger, more readable text in screenshots. The default dimensions of 800x600 provide good readability while capturing the essential above-the-fold content. Adjust the dimensions based on your specific needs:
 
-- 800px (default): Optimal for text-heavy articles and blogs
-- 1024px: Good for technical documentation sites
-- 1920px: Full desktop view for complex layouts
+- 800x600 (default): Optimal for text-heavy articles and blogs, captures key content without excessive scrolling
+- 1024x768: Good for technical documentation sites with more complex layouts
+- 1920x1200: Full desktop view for complex layouts and dashboards
+
+### Error Handling
+
+The tool includes robust error handling for network issues and page loading problems. If a page fails to fully load within the timeout period, the tool will still attempt to capture a screenshot of the partially loaded content, ensuring you get some output even from slow or problematic sites.
 
 ## Input Format
 

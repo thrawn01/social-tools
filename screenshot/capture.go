@@ -106,7 +106,9 @@ func captureRegularScreenshot(url, filename string, config ScreenshotConfig) err
 	}
 
 	if err := WaitForPageLoad(page); err != nil {
-		return fmt.Errorf("failed waiting for page load: %w", err)
+		// If page load fails, still attempt to take a screenshot
+		// This handles cases where pages timeout but are still partially loaded
+		fmt.Printf("Warning: Page load incomplete (%v), attempting screenshot anyway\n", err)
 	}
 
 	screenshot, err := page.Screenshot(false, &proto.PageCaptureScreenshot{
